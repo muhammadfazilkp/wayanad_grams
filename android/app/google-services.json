@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096168040746",
+    "project_id": "zudocoz-9451d",
+    "storage_bucket": "zudocoz-9451d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096168040746:android:6d579ee2db1cbef86a5653",
+        "android_client_info": {
+          "package_name": "com.example.zudocoz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC90rmgiNgy3Z3yS6-FSuenqcQUhEUAPys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
