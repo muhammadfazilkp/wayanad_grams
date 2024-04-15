@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,7 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String amount = "499";
+    // String amount = "499";
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -26,7 +25,6 @@ class HomeScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 30,
                     backgroundImage: AssetImage("asset/circuler.avif"),
-                    
                   ),
                   Gap(5),
                   Padding(
@@ -43,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 "Hello Jhone",
                 style: GoogleFonts.poppins(color: Colors.white),
               ),
-              
+
               const Gap(20),
 
               TextFormField(
@@ -214,18 +212,21 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  // mainAxisAlignment:
+                                  //     MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       "Price:600",
                                       style: GoogleFonts.poppins(
                                           color: Colors.brown),
                                     ),
+                                    const Gap(80),
                                     const Icon(
                                       CupertinoIcons.cart,
                                       color: Colors.brown,
-                                    )
+                                    ),
+                                    // const  CircleAvatar(backgroundColor: Colors.black,radius: 30,)
                                   ],
                                 )
                               ],
@@ -236,7 +237,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-              )
+              ),
             ],
           ),
         ),

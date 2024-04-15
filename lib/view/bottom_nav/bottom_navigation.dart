@@ -11,7 +11,7 @@ class BottomNavigationPage extends StatefulWidget {
 }
 
 int currentIndex = 0;
-final List<Widget> pages = [const HomeScreen(), const ChocolatePage()];
+final List<Widget> pages = [const HomeScreen(), const  MapScreen()];
 
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
   void onTabTapped(int index) {
