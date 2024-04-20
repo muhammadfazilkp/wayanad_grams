@@ -8,7 +8,7 @@ import 'package:zudocoz/view/login_page/logint_page.dart';
 import 'package:zudocoz/view/login_page/widget/custom_textfield.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key, Key? ky});
+   SignUpScreen({Key? key}) : super(key: key);
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class SignUpScreen extends StatelessWidget {
                 controller: register.passwordController,
               ),
               const Gap(12),
-              Mytextfield(
+              ConfirmField(
                 labeltext: "Confirm passwors",
-                controller: register.passwordController,
+                controller: register.confirmpass,
               ),
               Align(
                   alignment: Alignment.topRight,
@@ -57,7 +57,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   )),
               const Gap(19),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
@@ -70,12 +70,16 @@ class SignUpScreen extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () async {
                           if (formkey.currentState!.validate()) {
+                            
                             register.register(
                                 register.emailController.text.trim(),
-                                register.passwordController.text.trim());
+                                register.passwordController.text.trim(),
+                                register.confirmpass.text.trim(),
+                                );
 
                             register.emailController.text = "";
                             register.passwordController.text = "";
+                            register.confirmpass.text = "";
                             await Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
@@ -89,6 +93,7 @@ class SignUpScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.brown),
                         )),
                   ),
+                  const Gap(8),
                   Container(
                     height: 50,
                     width: 160,

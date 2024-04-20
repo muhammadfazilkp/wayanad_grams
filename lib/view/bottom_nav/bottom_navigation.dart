@@ -11,7 +11,7 @@ class BottomNavigationPage extends StatefulWidget {
 }
 
 int currentIndex = 0;
-final List<Widget> pages = [const HomeScreen(), const  MapScreen()];
+final List<Widget> pages = [const HomeScreen(), const MapScreen()];
 
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
   void onTabTapped(int index) {
@@ -29,32 +29,32 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
         children: <Widget>[
           Expanded(
             child: BottomNavigationBar(
-              selectedIconTheme: const IconThemeData(color: Colors.black),
-              unselectedItemColor: Colors.black,
-              elevation: 30.8,
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              backgroundColor: const Color.fromARGB(255, 11, 9, 9),
-              fixedColor: Colors.white,
+              
+              selectedFontSize: 17,
+              selectedIconTheme:
+                  const IconThemeData(color: Colors.brown, size: 28),
+              selectedItemColor: Colors.brown,
+              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
               type: BottomNavigationBarType.fixed,
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(
                     CupertinoIcons.home,
-                    color: Colors.white,
+                    // color: Colors.brown,
                   ),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     CupertinoIcons.cart_fill,
-                    color: Colors.white,
+                    // color: Colors.brown,
                   ),
                   label: "My Cart",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     CupertinoIcons.profile_circled,
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                   label: 'Profile',
                 ),

@@ -3,13 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zudocoz/view/home/widget/bottom_sheet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, Key? ky});
 
   @override
   Widget build(BuildContext context) {
-    // String amount = "499";
+    final sheetModel = BottomSheetModel();
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(8),
                     child: Icon(
-                      CupertinoIcons.cart,
+                      Icons.notifications,
                       color: Colors.white,
                     ),
                   )
@@ -125,29 +126,34 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.all(8),
-                      height: 120,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage('asset/coffie_image.jpeg'),
-                            fit: BoxFit.cover),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Coffee Plant',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11.0,
-                            ),
-                          )
-                        ],
+                    return InkWell(
+                      onTap: () {
+                        sheetModel.showModal(context);
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.all(8),
+                        height: 120,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              image: AssetImage('asset/coffie_image.jpeg'),
+                              fit: BoxFit.cover),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              'Coffee Plant',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 11.0,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -161,81 +167,81 @@ class HomeScreen extends StatelessWidget {
                 itemCount: 12,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 1.0,
+                  crossAxisSpacing: 9,
+                  mainAxisSpacing: 9,
+                  // childAspectRatio:.0,
+
                 ),
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 90,
-                    width: 140,
-                    decoration: BoxDecoration(
-                      // color: Colors.amber,
-                      image: const DecorationImage(
-                          image: AssetImage(
-                            "asset/images.jpeg",
-                          ),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(12),
+                  return  SizedBox(
+              height: 300, // Increased height to 250
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("asset/powder_image.jpeg"),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Stack(
+                  children: [
+                    const Align(
+                      alignment: Alignment.topRight,
+                      child: Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                        size: 24,
+                      ),
                     ),
-                    child: Stack(
-                      children: [
-                        const Align(
-                          alignment: Alignment.topRight,
-                          child: Icon(
-                            Icons.favorite_border,
-                            color: Colors.white,
-                            size: 24,
-                          ),
+                    Positioned(
+                      bottom: 0,
+                      top: 130,
+                      right: 0,
+                      left: 0,
+                      child: Container(
+                        height: 40,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(0.8),
                         ),
-                        Positioned(
-                          bottom: 0,
-                          top: 130,
-                          right: 0,
-                          left: 0,
-                          child: Container(
-                            height: 40,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(0.8)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    "Coffie breastoit",
-                                    style: GoogleFonts.poppins(
-                                        color: Colors.black, fontSize: 11),
-                                  ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "Coffie breastoit",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 11,
                                 ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  // mainAxisAlignment:
-                                  //     MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      "Price:600",
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.brown),
-                                    ),
-                                    const Gap(80),
-                                    const Icon(
-                                      CupertinoIcons.cart,
-                                      color: Colors.brown,
-                                    ),
-                                    // const  CircleAvatar(backgroundColor: Colors.black,radius: 30,)
-                                  ],
-                                )
+                              ),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "Price:600",
+                                  style: TextStyle(color: Colors.brown),
+                                ),
+                                SizedBox(width: 80),
+                                Icon(
+                                  Icons.shopping_cart,
+                                  color: Colors.brown,
+                                ),
                               ],
                             ),
-                          ),
-                        )
-                      ],
+                          ],
+                        ),
+                      ),
                     ),
-                  );
+                  ],
+                ),
+              ),
+            );
                 },
               ),
             ],

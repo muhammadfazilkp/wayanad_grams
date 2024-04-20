@@ -12,11 +12,12 @@ class SignUpMeathods extends ChangeNotifier {
   GoogleSignIn googleSign = GoogleSignIn();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmpass = TextEditingController();
 
-  void register(String email, password) async {
+  void register(String email, password,confirmpass) async {
     try {
       await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: password,);
     } catch (signUpError) {
       if (signUpError is PlatformException) {
         if (signUpError.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
@@ -31,7 +32,9 @@ class SignUpMeathods extends ChangeNotifier {
   bool? succes;
   String? userEmail;
   Future<void> signIn(
-      String email, String password, ) async {
+    String email,
+    String password,
+  ) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
