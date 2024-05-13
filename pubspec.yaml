@@ -51,7 +51,8 @@ dependencies:
   google_sign_in: ^6.2.1
   webview_flutter: ^4.7.0
   geolocator: ^11.0.0
-  google_maps_flutter: ^2.6.0
+  google_maps_flutter: ^2.2.8
+  dot_navigation_bar: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +91,11 @@ flutter:
      - asset/images.jpeg
      - asset/powder_image.jpeg
      - asset/circuler.avif
+     - asset/Gemini_Generated_Image_45qc8s45qc8s45qc.jpeg
+     - asset/Gemini_Generated_Image_oxa28qoxa28qoxa2.jpeg
+     - asset/logo-dark.png
+     - asset/logo.png
+     
     # - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

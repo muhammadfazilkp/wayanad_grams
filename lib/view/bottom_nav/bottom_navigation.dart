@@ -1,73 +1,71 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:zudocoz/view/coffie_view/coffie_view.dart';
 import 'package:zudocoz/view/home/home_page.dart';
+import 'package:zudocoz/view/profile_page/profile_view.dart';
 
 class BottomNavigationPage extends StatefulWidget {
-  const BottomNavigationPage({super.key, Key? ky});
+  const BottomNavigationPage({Key? key}) : super(key: key);
 
   @override
   State<BottomNavigationPage> createState() => _BottomNavigationPageState();
 }
 
-int currentIndex = 0;
-final List<Widget> pages = [const HomeScreen(), const MapScreen()];
-
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
-  void onTabTapped(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
+  int currentIndex = 0;
+  final List<Widget> pages = [
+    const HomeScreen(),
+    const MapScreen(),
+    const ProfileViewscreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[currentIndex],
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: BottomNavigationBar(
+      extendBody: true,
+      bottomNavigationBar: SizedBox(
+        height: 158.0,
+        child: DotNavigationBar(
+          
+          backgroundColor: Colors.white54,
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          items: [
+            DotNavigationBarItem(
+              icon: const Icon(
+                CupertinoIcons.home,
+                color: Colors.black, 
+              ),
+              selectedColor: Colors.brown, 
+              unselectedColor: Colors.grey, 
               
-              selectedFontSize: 17,
-              selectedIconTheme:
-                  const IconThemeData(color: Colors.brown, size: 28),
-              selectedItemColor: Colors.brown,
-              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
-              type: BottomNavigationBarType.fixed,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    CupertinoIcons.home,
-                    // color: Colors.brown,
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    CupertinoIcons.cart_fill,
-                    // color: Colors.brown,
-                  ),
-                  label: "My Cart",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    CupertinoIcons.profile_circled,
-                    // color: Colors.white,
-                  ),
-                  label: 'Profile',
-                ),
-              ],
-              currentIndex: currentIndex,
-              onTap: (int index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
             ),
-          ),
-        ],
+            DotNavigationBarItem(
+              icon: const Icon(
+                CupertinoIcons.cart_fill,
+                color: Colors.black, 
+              ),
+              selectedColor: Colors.brown, 
+              unselectedColor: Colors.grey, 
+              
+            ),
+            DotNavigationBarItem(
+              icon: const Icon(
+                CupertinoIcons.profile_circled,
+                color: Colors.black, 
+              ),
+              selectedColor: Colors.brown, 
+              unselectedColor: Colors.grey, 
+              
+            ),
+          ],
+        ),
       ),
     );
   }

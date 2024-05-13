@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,12 +30,10 @@ class _MapScreenState extends State<MapScreen> {
                         fit: BoxFit.cover),
                     borderRadius:
                         BorderRadius.vertical(bottom: Radius.circular(20))),
-                      
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   
                     IconButton(
                       onPressed: () {
                         Navigator.pop(context);
@@ -93,7 +90,10 @@ class _MapScreenState extends State<MapScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                           Text("4.9 (150)",style: GoogleFonts.poppins(color:Colors.white),),
+                          Text(
+                            "4.9 (150)",
+                            style: GoogleFonts.poppins(color: Colors.white),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(right: 30),
                             child: Container(

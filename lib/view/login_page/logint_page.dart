@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
               const Gap(10),
               const Text("Welcome back!!"),
               const Gap(10),
-              EmailTexfild(
+              Mytextfield(
                 labeltext: 'Username/E-mail',
                 controller: value.emailController,
               ),
