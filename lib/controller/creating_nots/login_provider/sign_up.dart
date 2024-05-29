@@ -2,28 +2,62 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:zudocoz/view/bottom_nav/bottom_navigation.dart';
 
 class SignUpMeathods extends ChangeNotifier {
   final Future<FirebaseApp> firebaseInitialization = Firebase.initializeApp();
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  GoogleSignIn googleSign = GoogleSignIn();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmpass = TextEditingController();
+  bool passwordVisiblity = false;
 
-  void register(String email, password,confirmpass) async {
+  void register(String email, String password, BuildContext context) async {
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password,);
-    } catch (signUpError) {
-      if (signUpError is PlatformException) {
-        if (signUpError.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-          debugPrint("---allready Existed!");
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Registration successful.'),
+          ),
+        );
+      }
 
-          /// `foo@bar.com` has alread been registered.
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const BottomNavigationPage()),
+        (Route<dynamic> route) => false,
+      );
+      // You can navigate to another page or perform other actions here upon successful registration
+    } catch (signUpError) {
+      if (signUpError is FirebaseAuthException) {
+        if (signUpError.code == 'email-already-in-use') {
+          debugPrint("--- Already Existed!");
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.red,
+                content: Text(
+                  'The email address is already in use by another account.',
+                  style: GoogleFonts.poppins(color: Colors.white),
+                ),
+              ),
+            );
+          }
+
+          return;
+        } else {
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('An error occurred: ${signUpError.message}'),
+              ),
+            );
+          }
         }
       }
     }

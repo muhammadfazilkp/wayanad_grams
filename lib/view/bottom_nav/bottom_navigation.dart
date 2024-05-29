@@ -17,7 +17,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
   final List<Widget> pages = [
     const HomeScreen(),
     const MapScreen(),
-    const ProfileViewscreen()
+     ProfileViewscreen()
   ];
 
   @override

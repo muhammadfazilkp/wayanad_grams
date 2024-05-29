@@ -39,7 +39,9 @@ class LoginScreen extends StatelessWidget {
               const Gap(10),
               Mytextfield(
                 labeltext: "Password",
+
                 controller: value.passwordController,
+              
               ),
               Align(
                 alignment: Alignment.centerRight,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:zudocoz/controller/creating_nots/notes.dart';
@@ -21,19 +22,20 @@ class SplashScreeb extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Gap(39),
             Image.asset(
               "asset/logo-dark.png",
-              height: 160,
-              width: 150,
+              height: 200,
+              width: 180,
             ),
-            SizedBox(
-              height: 400,
-              width: 600,
-              child: Center(
-                child: Lottie.asset(
-                    "asset/animation/Animation - 1709718267551.json"),
-              ),
-            ),
+            // SizedBox(
+            //   height: 400,
+            //   width: 600,
+            //   child: Center(
+            //     child: Lottie.asset(
+            //         "asset/animation/Animation - 1709718267551.json"),
+            //   ),
+            // ),
           ],
         ),
       ),

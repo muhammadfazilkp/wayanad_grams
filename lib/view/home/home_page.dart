@@ -29,17 +29,17 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Gap(10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CircleAvatar(
+                    // Image.asset("asset/logo.png"),
+                    CircleAvatar(
                       radius: 30,
                       backgroundImage: AssetImage(
                         "asset/circuler.avif",
                       ),
                     ),
-                    Image.asset("asset/logo.png"),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8),
                       child: Icon(
                         Icons.notifications,
@@ -60,7 +60,10 @@ class HomeScreen extends StatelessWidget {
                   decoration: InputDecoration(
                       hintText: "Capitichno",
                       hintStyle: const TextStyle(color: Colors.white),
-                      prefixIcon: const Icon(Icons.coffee,color: Colors.white,),
+                      prefixIcon: const Icon(
+                        Icons.coffee,
+                        color: Colors.white,
+                      ),
                       labelText: "Search your coffie",
                       labelStyle: const TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
@@ -131,7 +134,8 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 170, // Adjust as needed
+                  height: 170, 
+                  // Adjust as needed
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
@@ -228,20 +232,18 @@ class HomeScreen extends StatelessWidget {
                                     Text(
                                       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
                                       maxLines: 4,
-                                      style: GoogleFonts.poppins(
-                                        fontSize:13
-                                        
-                                      ),
+                                      style: GoogleFonts.poppins(fontSize: 13),
                                     ),
-                                    const  Gap(5),
-                                     Row(
-                                     mainAxisAlignment: MainAxisAlignment.spaceAround  ,
+                                    const Gap(5),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
                                       children: [
-                                         Text(
+                                        Text(
                                           "Price:600",
-                                         style: GoogleFonts.poppins( fontWeight:FontWeight.bold),
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w500),
                                         ),
-                                        
                                         const CircleAvatar(
                                           backgroundColor: Colors.brown,
                                           child: Icon(

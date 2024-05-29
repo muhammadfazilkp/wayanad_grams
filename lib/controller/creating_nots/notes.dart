@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:zudocoz/model/note.dart';
 import 'package:zudocoz/view/login_page/sign_up.dart';
+
 
 class LocalDatas extends ChangeNotifier {
   static String myNotes = "notes";
@@ -31,15 +33,17 @@ class LocalDatas extends ChangeNotifier {
   TextEditingController contentController = TextEditingController();
 
   void navigate(BuildContext context) {
+    FirebaseAuth auth=FirebaseAuth.instance;
+    User? user =auth.currentUser;
+    
+
+
+
+
+
     Future.delayed(const Duration(seconds: 5)).then((value) => Navigator.push(
         context, MaterialPageRoute(builder: (context) =>  SignUpScreen())));
   }
 
-
-  List<String>images=[
-   " asset/images.jpeg",
-   "asset/coffee-powder.jpg",
-   "asset/coffie_image.jpeg",
-   "asset/powder_image.jpeg"
-  ];
+ 
 }

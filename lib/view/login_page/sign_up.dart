@@ -1,15 +1,20 @@
-// ignore_for_file: unnecessary_const
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:zudocoz/controller/creating_nots/login_provider/sign_up.dart';
-import 'package:zudocoz/view/bottom_nav/bottom_navigation.dart';
 import 'package:zudocoz/view/login_page/logint_page.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,19 +54,36 @@ class SignUpScreen extends StatelessWidget {
                   child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
                     controller: register.passwordController,
+                    validator: (input) {
+                      if (input!.length < 6) {
+                        return "Your password needs to be at least 6 characters";
+                      }
+                      return null;
+                    },
+                    obscureText: register.passwordVisiblity,
+                    obscuringCharacter: '*',
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.password),
-                        suffixIcon: const Icon(
-                          Icons.remove_red_eye,
-                          color: Colors.white,
-                        ),
+                      
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                register.passwordVisiblity =
+                                    !register.passwordVisiblity;
+                              });
+                            },
+                            icon: Icon(
+                              register.passwordVisiblity == true
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.white,
+                            )),
                         labelText: "Passcode",
                         labelStyle: GoogleFonts.poppins(color: Colors.black),
                         focusedErrorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
                 ),
-               
                 Align(
                     alignment: Alignment.topRight,
                     child: Padding(
@@ -78,7 +100,7 @@ class SignUpScreen extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 12),
                           child: Text(
                             "All ready i have account?",
-                            style: TextStyle(color: Colors.black, fontSize: 11),
+                            style: TextStyle(color: Colors.white, fontSize: 11),
                           ),
                         ),
                       ),
@@ -93,20 +115,12 @@ class SignUpScreen extends StatelessWidget {
                           onPressed: () async {
                             if (formkey.currentState!.validate()) {
                               register.register(
-                                register.emailController.text.trim(),
-                                register.passwordController.text.trim(),
-                                register.confirmpass.text.trim(),
-                              );
+                                  register.emailController.text.trim(),
+                                  register.passwordController.text.trim(),
+                                  context);
 
                               register.emailController.text = "";
                               register.passwordController.text = "";
-                              register.confirmpass.text = "";
-                              await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const BottomNavigationPage()),
-                                  (route) => false);
                             }
                           },
                           style: const ButtonStyle(
